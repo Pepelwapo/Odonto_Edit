@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Odontología Edith</title>
+    <meta name="description" content="Clínica dental moderna en Monterrey. Prevención, estética y tratamientos avanzados." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .pill{ border:1px solid rgb(226,232,240); border-radius:9999px; padding:0.25rem 0.75rem; font-size:0.75rem; font-weight:600; letter-spacing:.04em; display:inline-flex; align-items:center; }
+      .section{ position:relative; padding-top:4rem; padding-bottom:4rem; }
+      .container{ max-width:80rem; margin:0 auto; padding-left:1rem; padding-right:1rem; }
+      .eyebrow{ margin-bottom:0.5rem; font-size:.875rem; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:#0369a1; }
+      .h2{ font-size:clamp(1.875rem, 2.5vw, 2.25rem); font-weight:800; letter-spacing:-.02em; }
+      .subtitle{ margin-top:.75rem; font-size:1rem; color:#475569; max-width:42rem; margin-left:auto; margin-right:auto; }
+      .card{ border:1px solid rgb(226,232,240); border-radius:1.5rem; padding:1.5rem; }
+      .btn{ display:inline-flex; align-items:center; justify-content:center; border-radius:1rem; padding:.75rem 1.25rem; font-size:.875rem; font-weight:700; box-shadow:0 1px 2px rgba(0,0,0,.04); border:1px solid rgb(226,232,240); transition:all .15s ease; }
+      .btn:hover{ box-shadow:0 4px 12px rgba(0,0,0,.06); transform:translateY(-1px); }
+      .btn-primary{ background:#0284c7; color:white; border-color:transparent; }
+      .btn-primary:hover{ background:#0369a1; }
+      .btn-ghost{ }
+    </style>
+  </head>
+  <body class="min-h-screen bg-white text-slate-900">
+    <div class="w-full bg-sky-50 border-b">
+      <div class="container h-10 flex items-center justify-between text-xs">
+        <div class="flex items-center gap-4">
+          <span class="inline-flex items-center gap-1">📞 <span class="font-medium">Agenda:</span> (81) 0000-0000</span>
+          <span class="hidden sm:inline-flex items-center gap-1">⏰ Lun-Sáb 9:00–19:00</span>
+        </div>
+        <a href="#contacto" class="hidden sm:inline text-sky-700 hover:underline" data-jump-contacto>Agenda tu cita</a>
+      </div>
+    </div>
+
+    <header class="sticky top-0 z-30 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b">
+      <div class="container h-16 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-sky-600 text-white">🦷</span>
+          <span class="font-extrabold tracking-tight">Odontología Edith</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="servicios.html" class="hover:text-sky-700">Servicios</a>
+          <a href="promos.html" class="hover:text-sky-700">Promociones</a>
+          <a href="clinicas.html" class="hover:text-sky-700">Clínicas</a>
+          <a href="equipo.html" class="hover:text-sky-700">Equipo</a>
+          <a href="testimonios.html" class="hover:text-sky-700">Testimonios</a>
+          <a href="#contacto" class="btn btn-primary" data-jump-contacto>Reservar cita</a>
+        </nav>
+        <a href="#contacto" class="md:hidden text-sm font-semibold" data-jump-contacto>Cita</a>
+      </div>
+    </header>
+
+    <div id="flash-container" class="container mt-4 hidden"></div>
+
+  <section class="container grid md:grid-cols-2 gap-8 items-center py-14">
+    <div>
+      <span class="pill">Sonríe con confianza</span>
+      <h1 class="mt-4 text-4xl sm:text-5xl font-extrabold leading-tight">Cuidado dental moderno y humano</h1>
+      <p class="mt-4 text-lg text-slate-600 max-w-xl">Odontología integral con especialistas certificados. Prevención, estética y tratamientos avanzados en un ambiente cálido.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#contacto" class="btn btn-primary" data-jump-contacto>Agendar ahora</a>
+        <a href="servicios.html" class="btn btn-ghost">Ver servicios</a>
+      </div>
+      <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+        <li class="flex items-center gap-2">✅ Primera valoración sin costo</li>
+        <li class="flex items-center gap-2">✅ Radiografías digitales</li>
+        <li class="flex items-center gap-2">✅ Planes de pago flexibles</li>
+        <li class="flex items-center gap-2">✅ Urgencias el mismo día</li>
+      </ul>
+    </div>
+    <div class="relative">
+      <div class="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-sky-100 to-sky-50 border shadow-inner grid place-items-center">
+        <div class="text-center text-slate-400">
+          <div class="text-6xl">🦷</div>
+          <p>Imagen de clínica / sonrisa</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="mb-10 text-center">
+        <p class="eyebrow">Tratamientos</p>
+        <h2 class="h2">Servicios principales</h2>
+        <p class="subtitle">Todo lo que necesitas para una boca sana: diagnóstico, prevención y estética.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card hover:shadow-md transition">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-700">🦷</span>
+            <h3 class="font-bold text-lg">Limpieza y profilaxis</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600">Elimina placa y sarro con ultrasonido. Recomendado cada 6 meses.</p>
+          <div class="mt-4"><a href="servicios.html" class="text-sm font-semibold text-sky-700 hover:underline">Saber más</a></div>
+        </div>
+        <div class="card hover:shadow-md transition">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-700">🦷</span>
+            <h3 class="font-bold text-lg">Resinas estéticas</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600">Restauraciones del color del diente con acabado natural.</p>
+          <div class="mt-4"><a href="servicios.html" class="text-sm font-semibold text-sky-700 hover:underline">Saber más</a></div>
+        </div>
+        <div class="card hover:shadow-md transition">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-700">🦷</span>
+            <h3 class="font-bold text-lg">Ortodoncia e Invisalign®</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600">Alineación dental con brackets o alineadores transparentes.</p>
+          <div class="mt-4"><a href="servicios.html" class="text-sm font-semibold text-sky-700 hover:underline">Saber más</a></div>
+        </div>
+        <div class="card hover:shadow-md transition">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-700">🦷</span>
+            <h3 class="font-bold text-lg">Blanqueamiento</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600">Aclarado profesional con geles de última generación.</p>
+          <div class="mt-4"><a href="servicios.html" class="text-sm font-semibold text-sky-700 hover:underline">Saber más</a></div>
+        </div>
+        <div class="card hover:shadow-md transition">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-700">🦷</span>
+            <h3 class="font-bold text-lg">Endodoncia</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600">Tratamiento de conductos con mínima molestia.</p>
+          <div class="mt-4"><a href="servicios.html" class="text-sm font-semibold text-sky-700 hover:underline">Saber más</a></div>
+        </div>
+        <div class="card hover:shadow-md transition">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-700">🦷</span>
+            <h3 class="font-bold text-lg">Implantes dentales</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600">Reemplazos fijos para piezas perdidas.</p>
+          <div class="mt-4"><a href="servicios.html" class="text-sm font-semibold text-sky-700 hover:underline">Saber más</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="contacto" class="section">
+  <div class="container grid md:grid-cols-2 gap-8">
+    <form class="card grid gap-4" id="contact-form">
+      <h3 class="font-bold text-lg">Reserva tu cita</h3>
+      <div>
+        <label class="block text-sm font-medium">Nombre completo</label>
+        <input name="nombre" class="mt-1 w-full rounded-xl border px-3 py-2" placeholder="Tu nombre" required />
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium">Teléfono</label>
+          <input name="telefono" class="mt-1 w-full rounded-xl border px-3 py-2" placeholder="(81) 0000-0000" required />
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Email</label>
+          <input name="email" type="email" class="mt-1 w-full rounded-xl border px-3 py-2" placeholder="tucorreo@ejemplo.com" />
+        </div>
+      </div>
+      <div>
+        <label class="block text-sm font-medium">Motivo</label>
+        <select name="motivo" class="mt-1 w-full rounded-xl border px-3 py-2">
+          <option>Valoración</option>
+          <option>Limpieza</option>
+          <option>Ortodoncia</option>
+          <option>Urgencia</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium">Mensaje</label>
+        <textarea name="mensaje" rows="4" class="mt-1 w-full rounded-xl border px-3 py-2" placeholder="Cuéntanos brevemente"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      <p class="text-xs text-slate-500">Al enviar aceptas nuestro aviso de privacidad.</p>
+    </form>
+
+    <div class="card">
+      <h3 class="font-bold text-lg">Atención al paciente</h3>
+      <p class="mt-2 text-sm text-slate-600">Estamos para ayudarte con dudas, costos y disponibilidad.</p>
+      <div class="mt-4 space-y-3 text-sm">
+        <div>📞 (81) 0000-0000</div>
+        <div>📍 Calle, número, colonia, Monterrey, N.L.</div>
+        <div>⏰ Lun-Sáb 9:00–19:00</div>
+      </div>
+      <div class="mt-6 aspect-[4/3] rounded-2xl bg-slate-100 grid place-items-center">
+        <span class="text-slate-400 text-sm">Aquí irá el mapa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <footer class="border-t mt-16">
+      <div class="container py-10 grid md:grid-cols-4 gap-8 text-sm">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-sky-600 text-white">🦷</span>
+            <span class="font-extrabold">Odontología Edith</span>
+          </div>
+          <p class="mt-3 text-slate-600">Clínica dental con enfoque humano y tecnología de punta.</p>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Servicios</p>
+          <ul class="space-y-1 text-slate-600">
+            <li>Profilaxis</li>
+            <li>Ortodoncia</li>
+            <li>Estética</li>
+            <li>Implantes</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Clínicas</p>
+          <ul class="space-y-1 text-slate-600">
+            <li>San Jerónimo</li>
+            <li>Cumbres</li>
+            <li>Centro</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold mb-2">Contacto</p>
+          <ul class="space-y-1 text-slate-600">
+            <li>(81) 0000-0000</li>
+            <li>WhatsApp</li>
+            <li>correo@odontologiaEdith JV.mx</li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center text-xs text-slate-500 py-6 border-t">© <span id="year"></span> Odontología Edith. Todos los derechos reservados.</div>
+    </footer>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
