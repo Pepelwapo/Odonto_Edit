@@ -19,7 +19,31 @@
       .btn-primary{ background:#0284c7; color:white; border-color:transparent; }
       .btn-primary:hover{ background:#0369a1; }
       .btn-ghost{ }
-    </style>
+    
+/* --- Water / professional background enhancements --- */
+body {
+  background-image:
+    radial-gradient(1000px 400px at 110% -10%, rgba(2,132,199,0.06), rgba(255,255,255,0)),
+    radial-gradient(800px 300px at -10% 0%, rgba(14,165,233,0.05), rgba(255,255,255,0));
+  background-repeat: no-repeat;
+}
+.header-water {
+  position: relative;
+}
+.header-water::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px 0;
+  height: 12px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="12" viewBox="0 0 1200 12" preserveAspectRatio="none"><path d="M0,6 C150,12 300,0 450,6 C600,12 750,0 900,6 C1050,12 1200,0 1350,6 L1350,12 L0,12 Z" fill="%23e0f2fe"/></svg>') repeat-x bottom;
+  opacity: .8;
+}
+/* --- Mobile menu animations --- */
+.menu-panel-enter { opacity: 0; transform: translateY(-6px); }
+.menu-panel-enter-active { opacity: 1; transform: translateY(0); transition: all .18s ease; }
+.menu-panel-exit { opacity: 1; transform: translateY(0); }
+.menu-panel-exit-active { opacity: 0; transform: translateY(-6px); transition: all .14s ease; }
+</style>
   </head>
   <body class="min-h-screen bg-white text-slate-900">
     <div class="w-full bg-sky-50 border-b">
@@ -32,7 +56,7 @@
       </div>
     </div>
 
-    <header class="sticky top-0 z-30 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b">
+    <header class="sticky top-0 z-30 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b header-water">
       <div class="container h-16 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-2">
           <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-sky-600 text-white">🦷</span>
@@ -46,9 +70,26 @@
           <a href="testimonios.html" class="hover:text-sky-700">Testimonios</a>
           <a href="#contacto" class="btn btn-primary" data-jump-contacto>Reservar cita</a>
         </nav>
-        <a href="#contacto" class="md:hidden text-sm font-semibold" data-jump-contacto>Cita</a>
-      </div>
-    </header>
+    <!-- Botón hamburguesa (solo móvil) -->
+    <button class="md:hidden inline-flex items-center gap-2 text-sm font-semibold"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            data-menu-toggle>
+      ☰ Menú
+    </button>
+  </div>
+</header>
+<!-- Menú móvil -->
+<nav id="mobile-menu" class="md:hidden hidden border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70">
+  <div class="container py-3 grid gap-3 text-sm font-medium">
+    <a href="servicios.html" class="hover:text-sky-700">Servicios</a>
+    <a href="promos.html" class="hover:text-sky-700">Promociones</a>
+    <a href="clinicas.html" class="hover:text-sky-700">Clínicas</a>
+    <a href="equipo.html" class="hover:text-sky-700">Equipo</a>
+    <a href="testimonios.html" class="hover:text-sky-700">Testimonios</a>
+    <a href="index.html#contacto" class="btn btn-primary" data-jump-contacto>Reservar cita</a>
+  </div>
+</nav>
 
     <div id="flash-container" class="container mt-4 hidden"></div>
 
@@ -59,7 +100,7 @@
         <h2 class="h2">Promociones del mes</h2>
         <p class="subtitle">Cascarón de tarjetas de oferta. Reemplazaremos textos y precios reales.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-3 gap-6" id="promos-grid">
         <div class="card flex flex-col">
           <div class="text-sm font-semibold text-sky-700">Paquete #1</div>
           <h3 class="mt-2 text-2xl font-extrabold">Título atractivo</h3>
@@ -97,6 +138,47 @@
           <div class="mt-6"><a href="index.html#contacto" class="btn btn-primary w-full">Reservar</a></div>
         </div>
       </div>
+      <!-- Fallback estático si no carga el JS/CSV -->
+      <noscript>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card flex flex-col">
+            <div class="text-sm font-semibold text-sky-700">Paquete #1</div>
+            <h3 class="mt-2 text-2xl font-extrabold">Título atractivo</h3>
+            <p class="mt-2 text-sm text-slate-600">Descripción breve del beneficio y condiciones.</p>
+            <div class="mt-4 text-3xl font-extrabold">$999 <span class="text-base font-semibold text-slate-500">MXN</span></div>
+            <ul class="mt-4 text-sm space-y-2">
+              <li>✅ Incluye X</li>
+              <li>✅ Válido Lun-Vie</li>
+              <li>✅ Limitado a N pacientes</li>
+            </ul>
+            <div class="mt-6"><a href="index.html#contacto" class="btn btn-primary w-full">Reservar</a></div>
+          </div>
+          <div class="card flex flex-col">
+            <div class="text-sm font-semibold text-sky-700">Paquete #2</div>
+            <h3 class="mt-2 text-2xl font-extrabold">Título atractivo</h3>
+            <p class="mt-2 text-sm text-slate-600">Descripción breve del beneficio y condiciones.</p>
+            <div class="mt-4 text-3xl font-extrabold">$999 <span class="text-base font-semibold text-slate-500">MXN</span></div>
+            <ul class="mt-4 text-sm space-y-2">
+              <li>✅ Incluye X</li>
+              <li>✅ Válido Lun-Vie</li>
+              <li>✅ Limitado a N pacientes</li>
+            </ul>
+            <div class="mt-6"><a href="index.html#contacto" class="btn btn-primary w-full">Reservar</a></div>
+          </div>
+          <div class="card flex flex-col">
+            <div class="text-sm font-semibold text-sky-700">Paquete #3</div>
+            <h3 class="mt-2 text-2xl font-extrabold">Título atractivo</h3>
+            <p class="mt-2 text-sm text-slate-600">Descripción breve del beneficio y condiciones.</p>
+            <div class="mt-4 text-3xl font-extrabold">$999 <span class="text-base font-semibold text-slate-500">MXN</span></div>
+            <ul class="mt-4 text-sm space-y-2">
+              <li>✅ Incluye X</li>
+              <li>✅ Válido Lun-Vie</li>
+              <li>✅ Limitado a N pacientes</li>
+            </ul>
+            <div class="mt-6"><a href="index.html#contacto" class="btn btn-primary w-full">Reservar</a></div>
+          </div>
+        </div>
+      </noscript>
     </div>
   </section>
 

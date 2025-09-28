@@ -48,3 +48,93 @@
     });
   }
 })();
+
+
+  // Promos: render from CSV if present
+  async function loadCSVPromos() {
+    var grid = document.getElementById('promos-grid');
+    if (!grid) return;
+    try {
+      const res = await fetch('data/promos.csv', { cache: 'no-store' });
+      if (!res.ok) throw new Error('No promos.csv');
+      const text = await res.text();
+      const rows = text.trim().split(/\r?\n/);
+      const headers = rows.shift().split(',');
+      function rowObj(line) {
+        const parts = line.split(',');
+        const o = {}; headers.forEach((h,i)=>o[h]=parts[i]||''); return o;
+      }
+      const data = rows.map(rowObj);
+      grid.innerHTML = '';
+      data.forEach(p => {
+        var card = document.createElement('div');
+        card.className = 'card flex flex-col';
+        card.innerHTML = `
+          <div class="text-sm font-semibold text-sky-700">Paquete #${p.paquete}</div>
+          <h3 class="mt-2 text-2xl font-extrabold">${p.title}</h3>
+          <p class="mt-2 text-sm text-slate-600">${p.desc}</p>
+          <div class="mt-4 text-3xl font-extrabold">$${p.price} <span class="text-base font-semibold text-slate-500">MXN</span></div>
+          <ul class="mt-4 text-sm space-y-2">
+            <li>✅ ${p.meta1}</li>
+            <li>✅ ${p.meta2}</li>
+            <li>✅ ${p.meta3}</li>
+          </ul>
+          <div class="mt-6"><a href="index.html#contacto" class="btn btn-primary w-full">Reservar</a></div>
+        `;
+        grid.appendChild(card);
+      });
+    } catch (e) {
+      // Leave fallback
+    }
+  }
+  loadCSVPromos();
+
+
+// --- Mobile hamburger menu ---
+(function () {
+  var btn = document.querySelector('[data-menu-toggle]');
+  var menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+
+  function openMenu() {
+    if (!menu.classList.contains('hidden')) return;
+    menu.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+    menu.classList.add('menu-panel-enter');
+    requestAnimationFrame(function(){
+      menu.classList.add('menu-panel-enter-active');
+      menu.classList.remove('menu-panel-enter');
+    });
+    setTimeout(function(){
+      menu.classList.remove('menu-panel-enter-active');
+    }, 220);
+    document.addEventListener('click', onClickOutside);
+  }
+  function closeMenu() {
+    if (menu.classList.contains('hidden')) return;
+    menu.classList.add('menu-panel-exit');
+    requestAnimationFrame(function(){
+      menu.classList.add('menu-panel-exit-active');
+      menu.classList.remove('menu-panel-exit');
+    });
+    setTimeout(function(){
+      menu.classList.add('hidden');
+      menu.classList.remove('menu-panel-exit-active');
+      btn.setAttribute('aria-expanded', 'false');
+    }, 160);
+    document.removeEventListener('click', onClickOutside);
+  }
+  function onClickOutside(e) {
+    if (!menu.contains(e.target) && e.target !== btn) closeMenu();
+  }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+  });
+
+  // Close if viewport switches to desktop
+  var mq = window.matchMedia('(min-width: 768px)');
+  function onChangeMQ(e){ if (e.matches) closeMenu(); }
+  if (mq.addEventListener) mq.addEventListener('change', onChangeMQ);
+  else mq.addListener(onChangeMQ);
+})();
