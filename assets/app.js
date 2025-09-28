@@ -236,3 +236,21 @@
   // If the page loaded with #menu (e.g., direct link), ensure it's visible
   if (location.hash === '#menu') menu.classList.remove('hidden');
 })();
+
+
+// Ensure the panel is visible at top when opened
+(function(){
+  var menu = document.getElementById('mobile-menu');
+  var buttons = document.querySelectorAll('[data-menu-toggle]');
+  if (!menu || !buttons.length) return;
+  function openMenuScrollTop() {
+    // small delay to allow repaint before scroll
+    setTimeout(function(){ try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch(_) { window.scrollTo(0,0); } }, 10);
+  }
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if (menu && !menu.classList.contains('hidden')) return;
+      openMenuScrollTop();
+    });
+  });
+})();

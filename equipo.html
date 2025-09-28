@@ -62,7 +62,10 @@ nav a:hover { text-decoration: none; }
   #menu:target #mobile-menu { display: block !important; }
   #menu:target #mobile-menu.panel { display: block !important; }
 }
-</style>
+
+/* Ensure mobile menu overlay sits on top of content */
+#mobile-menu { z-index: 60; }
+                  </style>
   </head>
   <body class="min-h-screen bg-white text-slate-900">
     <div class="w-full bg-sky-50 border-b">
@@ -101,7 +104,7 @@ nav a:hover { text-decoration: none; }
 
 <!-- Mobile Menu Container (works with :target and JS) -->
 <div id="menu" class="md:hidden">
-  <nav id="mobile-menu" class="hidden border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70" aria-label="Menú móvil">
+  <nav id="mobile-menu" class="md:hidden hidden fixed top-16 left-0 right-0 z-[60] border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 shadow-lg" aria-label="Menú móvil">
     <div class="container py-3 grid gap-3 text-sm font-medium panel">
       <a href="servicios.html" class="hover:text-sky-700">Servicios</a>
       <a href="promos.html" class="hover:text-sky-700">Promociones</a>
