@@ -138,3 +138,36 @@
   if (mq.addEventListener) mq.addEventListener('change', onChangeMQ);
   else mq.addListener(onChangeMQ);
 })();
+
+
+// Attach to all data-menu-toggle buttons (multi-page safe)
+(function () {
+  var buttons = document.querySelectorAll('[data-menu-toggle]');
+  var menu = document.getElementById('mobile-menu');
+  if (!buttons.length || !menu) return;
+  function openMenu() {
+    if (!menu.classList.contains('hidden')) return;
+    menu.classList.remove('hidden');
+    buttons.forEach(b => b.setAttribute('aria-expanded','true'));
+    document.addEventListener('click', onClickOutside);
+  }
+  function closeMenu() {
+    if (menu.classList.contains('hidden')) return;
+    menu.classList.add('hidden');
+    buttons.forEach(b => b.setAttribute('aria-expanded','false'));
+    document.removeEventListener('click', onClickOutside);
+  }
+  function onClickOutside(e) {
+    if (!menu.contains(e.target) && !Array.from(buttons).includes(e.target)) closeMenu();
+  }
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault(); e.stopPropagation();
+      if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+    });
+  });
+  var mq = window.matchMedia('(min-width: 768px)');
+  function onChangeMQ(e){ if (e.matches) closeMenu(); }
+  if (mq.addEventListener) mq.addEventListener('change', onChangeMQ);
+  else mq.addListener(onChangeMQ);
+})();

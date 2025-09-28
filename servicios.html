@@ -43,6 +43,12 @@ body {
 .menu-panel-enter-active { opacity: 1; transform: translateY(0); transition: all .18s ease; }
 .menu-panel-exit { opacity: 1; transform: translateY(0); }
 .menu-panel-exit-active { opacity: 0; transform: translateY(-6px); transition: all .14s ease; }
+
+/* --- No-JS fallback for mobile menu using :target --- */
+@media (max-width: 767px) {
+  #mobile-menu-target:target { display: block !important; }
+}
+.hamburger-icon { width: 20px; height: 20px; display:inline-block; }
 </style>
   </head>
   <body class="min-h-screen bg-white text-slate-900">
