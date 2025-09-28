@@ -49,7 +49,14 @@ body {
   #mobile-menu-target:target { display: block !important; }
 }
 .hamburger-icon { width: 20px; height: 20px; display:inline-block; }
-</style>
+
+/* Wave overlay must not block clicks */
+.header-water::after { pointer-events:none; z-index:0; }
+header.header-water > .container { position: relative; z-index: 10; }
+nav a { cursor: pointer; }
+/* Ensure hover states remain */
+nav a:hover { text-decoration: none; }
+                  </style>
   </head>
   <body class="min-h-screen bg-white text-slate-900">
     <div class="w-full bg-sky-50 border-b">

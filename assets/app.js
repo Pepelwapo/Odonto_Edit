@@ -171,3 +171,19 @@
   if (mq.addEventListener) mq.addEventListener('change', onChangeMQ);
   else mq.addListener(onChangeMQ);
 })();
+
+
+// Close mobile menu when clicking any link inside
+(function () {
+  var menu = document.getElementById('mobile-menu');
+  if (!menu) return;
+  function closeMenu() {
+    if (menu.classList.contains('hidden')) return;
+    menu.classList.add('hidden');
+    document.querySelectorAll('[data-menu-toggle]').forEach(b => b.setAttribute('aria-expanded','false'));
+  }
+  menu.addEventListener('click', function(e){
+    var a = e.target.closest('a');
+    if (a) { setTimeout(closeMenu, 0); }
+  });
+})();
