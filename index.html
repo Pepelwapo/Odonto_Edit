@@ -56,7 +56,13 @@ header.header-water > .container { position: relative; z-index: 10; }
 nav a { cursor: pointer; }
 /* Ensure hover states remain */
 nav a:hover { text-decoration: none; }
-                  </style>
+                  
+/* Bulletproof mobile menu fallback using :target */
+@media (max-width: 767px) {
+  #menu:target #mobile-menu { display: block !important; }
+  #menu:target #mobile-menu.panel { display: block !important; }
+}
+</style>
   </head>
   <body class="min-h-screen bg-white text-slate-900">
     <div class="w-full bg-sky-50 border-b">
@@ -92,17 +98,24 @@ nav a:hover { text-decoration: none; }
     </button>
   </div>
 </header>
+
+<!-- Mobile Menu Container (works with :target and JS) -->
+<div id="menu" class="md:hidden">
+  <nav id="mobile-menu" class="hidden border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70" aria-label="Menú móvil">
+    <div class="container py-3 grid gap-3 text-sm font-medium panel">
+      <a href="servicios.html" class="hover:text-sky-700">Servicios</a>
+      <a href="promos.html" class="hover:text-sky-700">Promociones</a>
+      <a href="clinicas.html" class="hover:text-sky-700">Clínicas</a>
+      <a href="equipo.html" class="hover:text-sky-700">Equipo</a>
+      <a href="testimonios.html" class="hover:text-sky-700">Testimonios</a>
+      <a href="index.html#contacto" class="btn btn-primary" data-jump-contacto>Reservar cita</a>
+      <a href="#" class="text-slate-600">Cerrar ✕</a>
+    </div>
+  </nav>
+</div>
+
 <!-- Menú móvil -->
-<nav id="mobile-menu" class="md:hidden hidden border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70">
-  <div class="container py-3 grid gap-3 text-sm font-medium">
-    <a href="servicios.html" class="hover:text-sky-700">Servicios</a>
-    <a href="promos.html" class="hover:text-sky-700">Promociones</a>
-    <a href="clinicas.html" class="hover:text-sky-700">Clínicas</a>
-    <a href="equipo.html" class="hover:text-sky-700">Equipo</a>
-    <a href="testimonios.html" class="hover:text-sky-700">Testimonios</a>
-    <a href="index.html#contacto" class="btn btn-primary" data-jump-contacto>Reservar cita</a>
-  </div>
-</nav>
+
 
     <div id="flash-container" class="container mt-4 hidden"></div>
 

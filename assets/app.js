@@ -187,3 +187,52 @@
     if (a) { setTimeout(closeMenu, 0); }
   });
 })();
+
+
+// Robust hamburger: works with or without JS. If JS is present, we intercept "#menu" and toggle classes.
+(function () {
+  var buttons = document.querySelectorAll('[data-menu-toggle]');
+  var menu = document.getElementById('mobile-menu');
+  var menuContainer = document.getElementById('menu');
+  if (!buttons.length || !menu || !menuContainer) return;
+
+  function openMenu() {
+    menu.classList.remove('hidden');
+    buttons.forEach(b => b.setAttribute('aria-expanded','true'));
+    history.replaceState(null, '', '#menu'); // keep anchor for back button consistency
+    document.addEventListener('click', onClickOutside);
+  }
+  function closeMenu() {
+    if (menu.classList.contains('hidden')) return;
+    menu.classList.add('hidden');
+    buttons.forEach(b => b.setAttribute('aria-expanded','false'));
+    if (location.hash === '#menu') history.replaceState(null, '', location.pathname.split('/').pop() || 'index.html');
+    document.removeEventListener('click', onClickOutside);
+  }
+  function onClickOutside(e) {
+    if (!menu.contains(e.target) && !Array.from(buttons).includes(e.target)) closeMenu();
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      // Intercept '#menu' navigation to avoid scroll jump; still works without JS
+      if (btn.getAttribute('href') === '#menu') { e.preventDefault(); e.stopPropagation(); }
+      if (menu.classList.contains('hidden')) openMenu(); else closeMenu();
+    });
+  });
+
+  // Close on link click inside
+  menu.addEventListener('click', function(e){
+    var a = e.target.closest('a');
+    if (a) setTimeout(closeMenu, 0);
+  });
+
+  // Close if viewport switches to desktop
+  var mq = window.matchMedia('(min-width: 768px)');
+  function onChangeMQ(e){ if (e.matches) closeMenu(); }
+  if (mq.addEventListener) mq.addEventListener('change', onChangeMQ);
+  else mq.addListener(onChangeMQ);
+
+  // If the page loaded with #menu (e.g., direct link), ensure it's visible
+  if (location.hash === '#menu') menu.classList.remove('hidden');
+})();
